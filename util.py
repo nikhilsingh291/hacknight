@@ -44,3 +44,40 @@ def img_search(img_path,search):
     return True
     
     
+def search_documents(files,details):
+    name=details['name']
+    vehicle_no=details['vehicle']
+    policy_no=details['policy']
+    for i in files.keys():
+        if i== 'policy':
+            if file[i].split()[-1]=='.pdf':
+                p=pdf_search(file[i],[name,vehicle_no,policy_no])
+            else:
+                p=img_search(file[i],[name,vehicle_no,policy_no])
+                
+        if i== 'dl':
+            if file[i].split()[-1]=='.pdf':
+                d=pdf_search(file[i],[name])
+            else:
+                d=img_search(file[i],[name])
+                
+        if i== 'rc':
+            if file[i].split()[-1]=='.pdf':
+                r=pdf_search(file[i],[name,vehicle_no])
+            else:
+                r=img_search(file[i],[name,vehicle_no])
+                
+        if i== 'fir':
+            if file[i].split()[-1]=='.pdf':
+                f=pdf_search(file[i],[name,vehicle_no])
+            else:
+                f=img_search(file[i],[name,vehicle_no])
+        if i== 'img':
+            if file[i].split()[-1]=='.pdf':
+                m=pdf_search(file[i],[vehicle_no])
+            else:
+                m=img_search(file[i],[vehicle_no])
+        
+    if(d and r and p and m and f):
+        return True
+    
